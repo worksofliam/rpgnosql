@@ -1,0 +1,31 @@
+**FREE
+
+Dcl-C TYPE_STRING 1;
+Dcl-C TYPE_NUMBER 2;
+
+Dcl-Pr NoSQL_Table ExtProc;
+  pTableName Pointer Value options(*string);
+End-Pr;
+
+Dcl-Pr NoSQL_Equal ExtProc;
+  pJSONPath  Pointer Value options(*string);
+  pPathType  Int(3) Const;
+  pValue     Pointer Value options(*string);
+End-Pr;
+
+Dcl-Pr NoSQL_Open Ind ExtProc;
+End-Pr;
+
+Dcl-Pr NoSQL_Next Ind ExtProc;
+End-Pr;
+
+Dcl-Pr NoSQL_AsString Varchar(1024) ExtProc;
+  pJSONPath Pointer Value options(*string);
+End-Pr;
+
+Dcl-Pr NoSQL_AsNumber Float(8) ExtProc;
+  pJSONPath Pointer Value options(*string);
+End-Pr;
+
+Dcl-Pr NoSQL_Close ExtProc;
+End-Pr;
