@@ -1,16 +1,28 @@
 **FREE
 
+//***********************************
+
+Dcl-C COMP_EQUAL 1;
+Dcl-C COMP_NOTEQUAL 2;
+Dcl-C COMP_MORETHAN 3;
+Dcl-C COMP_LESSTHAN 4;
+
+//***********************************
+
 Dcl-C TYPE_STRING 1;
 Dcl-C TYPE_NUMBER 2;
+
+//***********************************
 
 Dcl-Pr NoSQL_Table ExtProc;
   pTableName Pointer Value options(*string);
 End-Pr;
 
 Dcl-Pr NoSQL_Equal ExtProc;
-  pJSONPath  Pointer Value options(*string);
-  pPathType  Int(3) Const;
-  pValue     Pointer Value options(*string);
+  pJSONPath   Pointer Value options(*string);
+  pComparison Int(3) Const;
+  pValue      Pointer Value options(*string);
+  pPathType   Int(3) Const;
 End-Pr;
 
 Dcl-Pr NoSQL_Open Ind ExtProc;

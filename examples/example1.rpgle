@@ -9,8 +9,8 @@ Dcl-S CurrentName Char(30);
 Dcl-S CurrentBalance Packed(9:2);
 
 NoSQL_Table('barry.docs');
-NoSQL_Equal('$.favoriteFruit':TYPE_STRING:'orange');
-NoSQL_Equal('$.index':TYPE_NUMBER:'3606');
+NoSQL_Equal('$.favoriteFruit':COMP_EQUAL:'orange':TYPE_STRING);
+NoSQL_Equal('$.index':COMP_EQUAL:'3606':TYPE_NUMBER);
 
 If (NoSQL_Open());
   index = 0;

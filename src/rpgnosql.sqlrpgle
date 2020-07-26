@@ -30,9 +30,10 @@ End-Proc;
 
 Dcl-Proc NoSQL_Equal Export;
   Dcl-Pi NoSQL_Equal;
-    pJSONPath  Pointer Value options(*string);
-    pPathType  Int(3) Const;
-    pValue     Pointer Value options(*string);
+    pJSONPath   Pointer Value options(*string);
+    pComparison Int(3) Const;
+    pValue      Pointer Value options(*string);
+    pPathType   Int(3) Const;
   End-Pi;
 
   Dcl-S lIndex Int(5);
@@ -54,7 +55,18 @@ Dcl-Proc NoSQL_Equal Export;
       SQLStatement += 'RETURNING DOUBLE';
   Endsl;
 
-  SQLStatement += ') = ';
+  SQLStatement += ') ';
+
+  Select;
+    When (pComparison = COMP_EQUAL);
+      SQLStatement += '= ';
+    When (pComparison = COMP_NOTEQUAL);
+      SQLStatement += '!= ';
+    When (pComparison = COMP_MORETHAN);
+      SQLStatement += '> ';
+    When (pComparison = COMP_LESSTHAN);
+      SQLStatement += '< ';
+  Endsl;
 
   Select;
     When (pPathType = TYPE_STRING);
