@@ -31,6 +31,10 @@ End-Pr;
 Dcl-Pr NoSQL_Next Ind ExtProc;
 End-Pr;
 
+Dcl-Pr NoSQL_Exists Ind ExtProc;
+  pJSONPath Pointer Value options(*string);
+End-Pr;
+
 Dcl-Pr NoSQL_AsString Varchar(1024) ExtProc;
   pJSONPath Pointer Value options(*string);
 End-Pr;

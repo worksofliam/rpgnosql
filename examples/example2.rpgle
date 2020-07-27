@@ -9,7 +9,7 @@ Dcl-S CurrentName Char(30);
 Dcl-S CurrentBalance Packed(9:2);
 
 NoSQL_Table('barry.docs');
-NoSQL_Equal('$.balance':COMP_MORETHAN:'5000':TYPE_NUMBER);
+NoSQL_Equal('$.balance':COMP_MORETHAN:'20000':TYPE_NUMBER);
 
 If (NoSQL_Open());
   Dow (NoSQL_Next());

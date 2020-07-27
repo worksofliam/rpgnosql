@@ -102,6 +102,26 @@ End-Proc;
 
 //***********************************
 
+Dcl-Proc NoSQL_Exists Export;
+  Dcl-Pi NoSQL_Exists Ind;
+    pJSONPath Pointer Value options(*string);
+  End-Pi;
+
+  Dcl-S ReturnValue Varchar(2);
+  Dcl-S Path        Varchar(128);
+
+  Path = %Str(pJSONPath);
+  
+  EXEC SQL SET :ReturnValue =
+    JSON_Value(:CurrentDocument, 
+               :Path RETURNING VARCHAR(1024)
+                     DEFAULT '*N' ON ERROR);
+
+  Return (ReturnValue <> '*N');
+End-Proc;
+
+//***********************************
+
 Dcl-Proc NoSQL_AsString Export;
   Dcl-Pi NoSQL_AsString Varchar(1024);
     pJSONPath Pointer Value options(*string);
